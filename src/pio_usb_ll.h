@@ -55,8 +55,11 @@ typedef struct {
   PIO pio_usb_rx; // could not set to volatile
   uint sm_rx;
   uint offset_rx;
+
+  PIO pio_usb_eop; // could not set to volatile
   uint sm_eop;
   uint offset_eop;
+
   uint rx_reset_instr;
   uint device_rx_irq_num;
 

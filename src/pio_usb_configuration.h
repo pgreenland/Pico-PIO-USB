@@ -8,6 +8,7 @@ typedef struct {
     uint8_t tx_ch;
     uint8_t pio_rx_num;
     uint8_t sm_rx;
+    uint8_t pio_eop_num;
     uint8_t sm_eop;
     void* alarm_pool;
     int8_t debug_pin_rx;
@@ -26,6 +27,8 @@ typedef struct {
 
 #define PIO_USB_RX_DEFAULT 1
 #define PIO_SM_USB_RX_DEFAULT 0
+
+#define PIO_USB_EOP_DEFAULT 0
 #define PIO_SM_USB_EOP_DEFAULT 1
 
 #define PIO_USB_DEBUG_PIN_NONE (-1)
@@ -34,8 +37,8 @@ typedef struct {
   {                                                                            \
     PIO_USB_DP_PIN_DEFAULT, PIO_USB_TX_DEFAULT, PIO_SM_USB_TX_DEFAULT,         \
         PIO_USB_DMA_TX_DEFAULT, PIO_USB_RX_DEFAULT, PIO_SM_USB_RX_DEFAULT,     \
-        PIO_SM_USB_EOP_DEFAULT, NULL, PIO_USB_DEBUG_PIN_NONE,                  \
-        PIO_USB_DEBUG_PIN_NONE                                                 \
+        PIO_USB_EOP_DEFAULT, PIO_SM_USB_EOP_DEFAULT,                           \
+        NULL, PIO_USB_DEBUG_PIN_NONE, PIO_USB_DEBUG_PIN_NONE                   \
   }
 
 #define PIO_USB_EP_POOL_CNT 32

@@ -42,7 +42,7 @@ static void __no_inline_not_in_flash_func(update_ep0_crc5_lut)(uint8_t addr) {
 static __always_inline void restart_usb_reveiver(pio_port_t *pp) {
   pio_sm_exec(pp->pio_usb_rx, pp->sm_rx, pp->rx_reset_instr);
   pio_sm_restart(pp->pio_usb_rx, pp->sm_rx);
-  pio_sm_restart(pp->pio_usb_rx, pp->sm_eop);
+  pio_sm_restart(pp->pio_usb_eop, pp->sm_eop);
   pp->pio_usb_rx->irq = IRQ_RX_ALL_MASK;
 }
 

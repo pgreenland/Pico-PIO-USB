@@ -12,9 +12,13 @@ static usb_device_t *usb_device = NULL;
 
 void core1_main() {
   sleep_ms(10);
+  printf("hello core 1!\n");
 
   // To run USB SOF interrupt in core1, create alarm pool in core1.
   static pio_usb_configuration_t config = PIO_USB_DEFAULT_CONFIG;
+  config.pin_dp = 16;
+  config.debug_pin_rx = 18;
+  config.debug_pin_eop = 19;
   config.alarm_pool = (void*)alarm_pool_create(2, 1);
   usb_device = pio_usb_host_init(&config);
 
@@ -32,7 +36,7 @@ int main() {
   set_sys_clock_khz(120000, true);
 
   stdio_init_all();
-  printf("hello!");
+  printf("hello core 0!\n");
 
   sleep_ms(10);
 
